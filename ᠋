@@ -1,0 +1,723 @@
+repeat
+	task.wait()
+until game:IsLoaded()
+
+local Settings = {
+	Prefix = ";",
+	GetPlayerSeperator = ",",
+	Version = "2.0",
+	Themes = {
+		--// Gui
+		PrimaryBGColor = Color3.fromRGB(33, 34, 44), -- // default : 25,25,25
+		TopbarColor = Color3.fromRGB(34, 35, 45), -- // default : 26,26,26
+		PrimaryTextColor = Color3.fromRGB(255, 255, 255), -- // default : 255,255,255
+		SecondaryTextColor = Color3.fromRGB(200, 200, 200), -- // default : 200,200,200
+		ImageColor = Color3.fromRGB(255, 255, 255), -- // default : 255,255,255
+		OutlineColor = Color3.fromRGB(0, 0, 0), -- // border of the uis (basically acts as a shadow) : default : 0, 0, 0
+		OutlineColor2 = Color3.fromRGB(39, 41, 52), -- // outline of stuff in uis (buttons, frames, etc.) : default : 45, 45, 45
+		--// CmdBar
+		CommandLinesColor = Color3.fromRGB(33, 34, 44),
+		CommandCenterBarColor = Color3.fromRGB(33, 34, 44),
+		EdgeColor = Color3.fromRGB(33, 34, 44),
+		AutofillColor = Color3.fromRGB(33, 34, 44),
+		AutofillTextColor = Color3.fromRGB(255, 255, 255),
+		InputTextColor = Color3.fromRGB(255, 255, 255)
+	},
+	KeyBinds = {},
+	Waypoints = {},
+	Options = {},
+	Admins = {}
+}
+
+--// if re-executed it will just remove the old ui
+if getgenv then
+	if getgenv().NamelessLoaded then
+		getgenv().NamelessInterfacePath.Parent = nil
+		getgenv().ShadowPath.Parent = nil
+	end
+end
+
+local Checks = {
+	CheckIfFolderFuncs = isfolder and makefolder and delfolder,
+	CheckIfFileFuncs = isfile and writefile and delfile and listfiles and loadfile
+}
+
+if Checks.CheckIfFolderFuncs then
+	if not isfolder("Nameless-Admin-V2") then
+		makefolder("Nameless-Admin-V2")
+	end
+
+	if not isfolder("Nameless-Admin-V2/Plugins") then
+		makefolder("Nameless-Admin-V2/Plugins")
+	end
+
+	if not isfolder("Nameless-Admin-V2/Waypoints") then
+		makefolder("Nameless-Admin-V2/Waypoints")
+	end
+
+	if not isfolder("Nameless-Admin-V2/KeyBinds") then
+		makefolder("Nameless-Admin-V2/KeyBinds")
+	end
+end
+
+local Services = {
+	Players = game:GetService("Players"),
+	CoreGui = game:GetService("CoreGui"),
+	UserInputService = game:GetService("UserInputService"),
+	LocalPlayer = game:GetService("Players").LocalPlayer,
+	PlayerGui = game:GetService("Players").LocalPlayer.PlayerGui,
+	StarterGui = game:GetService("StarterGui"),
+	RunService = game:GetService("RunService"),
+	TeleportService = game:GetService("TeleportService"),
+	SoundService = game:GetService("SoundService"),
+	TweenService = game:GetService("TweenService"),
+	AvatarEditorService = game:GetService("AvatarEditorService"),
+	Workspace = workspace,
+	Character = game:GetService("Players").LocalPlayer.Character,
+	TextChatService = game:GetService("TextChatService"),
+	ReplicatedStorage = game:GetService("ReplicatedStorage"),
+	Camera = workspace.CurrentCamera,
+	Mouse = game:GetService("Players").LocalPlayer:GetMouse(),
+	Lighting = game:GetService("Lighting")
+}
+
+Services.LocalPlayer.CharacterAdded:Connect(
+	function(NewCharacter)
+		Services.Character = NewCharacter
+	end
+)
+
+local CommandToggles = {
+	FakeLag = false,
+	Nerd = false,
+	NerdAlreadyRan = false,
+	StarterPlaceBlockSpam = false,
+	LoopFling = false,
+	ESP = false,
+	AlreadyStartedLogging = false, -- used for the logs commands
+	HideDisplayNames = false,
+	FollowNPCS = false,
+	LAAT = false,
+	InfIniteJump = false,
+	TPWalk = false,
+	Walkfling = true,
+	TBot = false,
+	HideUIs = {},
+	AntiFling = false,
+	FloodChat = false,
+	Disability = false,
+	AlreadyRanDisability = false,
+	LoopGrab = false,
+	Loop = false,
+	LoopGrabDelete = false,
+	Stand = false,
+	Mute = false,
+	Glitch = false,
+}
+
+local Interface
+Interface = game:GetObjects("rbxassetid://15144458714")[1]
+Interface.Parent = Services.CoreGui
+
+Interface.Servers.Visible = false
+Interface.Options.Visible = false
+Interface.Commands.Visible = false
+Interface.Top.Visible = false
+Interface.Logs.Visible = false
+Interface.Introduction.Visible = false
+Interface.CmdBar.Visible = false
+Interface.Notification.Visible = true
+Interface.Notification.Notification.Visible = false
+Interface.Top.PlayerIcon.Image =
+	Services.Players:GetUserThumbnailAsync(
+		Services.LocalPlayer.UserId,
+		Enum.ThumbnailType.HeadShot,
+		Enum.ThumbnailSize.Size420x420
+	)
+
+local NFuncs = {} --// NamelessFunctions
+local PlayerFuncs = {}
+local UIFuncs = {
+	--// Popup
+	FrameSpeed = 0.5,
+	CloseSpeed = 0.3,
+	Styles = {
+		OpenEasingStyle = Enum.EasingStyle.Back,
+		OpenEasingDirection = Enum.EasingDirection.InOut,
+		CloseEasingStyle = Enum.EasingStyle.Sine,
+		CloseEasingDirection = Enum.EasingDirection.Out
+	},
+	--// Notification
+	NotificationHandler = Interface.Notification,
+	OriginalNotificationSize = Interface.Notification.Notification.Size,
+	NotificationTweenSpeed = 0.2,
+	NotificationStyles = {
+		EasingStyle = Enum.EasingStyle.Sine,
+		EasingDirection = Enum.EasingDirection.Out
+	}
+}
+
+function NFuncs.CheckIfNPC(Character)
+	if
+		Character and Character.ClassName == "Model" and Character:FindFirstChildOfClass("Humanoid") and
+		not Services.Players:GetPlayerFromCharacter(Character)
+	then
+		return true
+	else
+		return false
+	end
+end
+
+function NFuncs.RandomString()
+	local String = {}
+	for St = 1, math.random(10, 15) do
+		String[St] = string.char(math.random(32, 126))
+	end
+	return table.concat(String)
+end
+
+--[[function NFuncs.CheckIfMobile()
+	if table.find({Enum.Platform.IOS, Enum.Platform.Android}, Services.UserInputService:GetPlatform()) then 
+		return true
+	else
+		return false
+	end
+end]]
+function PlayerFuncs.GetPlayer(Arg)
+	local Target = {}
+
+	local PlayerNames = Library.ParseText(Arg, Settings.GetPlayerSeperator)
+	for i, String in next, PlayerNames or {"me"} do
+		if String == nil then
+			table.insert(Target, Services.LocalPlayer)
+		elseif String:lower() == "random" then
+			table.insert(Target, Services.Players:GetPlayers()[math.random(#Services.Players:GetPlayers())])
+		elseif String:lower() == "me" then
+			table.insert(Target, Services.LocalPlayer)
+		elseif String:lower() == "all" then
+			for i, Player in next, Services.Players:GetPlayers() do
+				table.insert(Target, Player)
+			end
+		elseif String:lower() == "others" then
+			for i, Player in next, Services.Players:GetPlayers() do
+				if Player ~= Services.LocalPlayer then
+					table.insert(Target, Player)
+				end
+			end
+		elseif String:find("*") == 1 then --// Team search
+			for i, Player in next, Services.Players:GetPlayers() do
+				if tostring(Player.Team):lower():find(String:gsub(2)) then
+					table.insert(Target, Player)
+				end
+			end
+		elseif String:lower() == "enemies" then
+			for i, Player in next, Services.Players:GetPlayers() do
+				if Player.Team ~= Services.LocalPlayer.Team then
+					table.insert(Target, Player)
+				end
+			end
+		elseif String:lower() == "dead" then
+			for i, Player in next, Services.Players:GetPlayers() do
+				if Player.Character and Player.Character.Humanoid then
+					if Player.Character.Humanoid.Health == 0 then
+						table.insert(Target, Player)
+					end
+				end
+			end
+		elseif String:lower() == "alive" then
+			for i, Player in next, Services.Players:GetPlayers() do
+				if Player.Character and Player.Character.Humanoid then
+					if Player.Character.Humanoid.Health >= 0 then
+						table.insert(Target, Player)
+					end
+				end
+			end
+		elseif String:lower() == "npc" then
+			for i, NPC in next, workspace:GetDescendants() do
+				if NFuncs.CheckIfNPC(NPC) then
+					table.insert(Target, NPC)
+				end
+			end
+		elseif String:lower() == "friends" then
+			for i, Player in next, Services.Players:GetPlayers() do
+				if Player:IsFriendsWith(Services.LocalPlayer.UserId) and Player ~= Services.LocalPlayer then
+					table.insert(Target, Player)
+				end
+			end
+		elseif String:lower() == "nonfriends" then
+			for i, Player in next, Services.Players:GetPlayers() do
+				if not Player:IsFriendsWith(Services.LocalPlayer.UserId) and Player ~= Services.LocalPlayer then
+					table.insert(Target, Player)
+				end
+			end
+		elseif String:lower() == "closest" then
+			local Lowest = math.huge
+			local LPlayer
+			if Services.LocalPlayer.Character then
+				for i, Player in next, Services.Players:GetPlayers() do
+					if Player.Character and Player ~= Services.LocalPlayer then
+						local Distance =
+							Player:DistanceFromCharacter(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+						if Distance < Lowest then
+							Lowest = Distance
+							LPlayer = Player
+						end
+					end
+				end
+				table.insert(Target, LPlayer)
+			end
+		elseif String:lower() == "farthest" then
+			local Highest = 0
+			if Services.LocalPlayer.Character then
+				for i, Player in next, Services.Players:GetPlayers() do
+					if Player.Character and Player ~= Services.LocalPlayer then
+						local Distance = Player:DistanceFromCharacter(Services.Character.HumanoidRootPart.Position)
+						if Distance > Highest then
+							Highest = Distance
+							table.insert(Target, Player)
+						end
+					end
+				end
+			else
+				return
+			end
+		else
+			String = String:lower():gsub("%s", "")
+			for _, Player in next, Services.Players:GetPlayers() do
+				if Player.Name:lower():match(String) then
+					table.insert(Target, Player)
+				elseif Player.DisplayName:lower():match("^" .. String) then
+					table.insert(Target, Player)
+				end
+			end
+		end
+	end
+	return Target
+end
+
+function PlayerFuncs.Chat(Message)
+	if Services.TextChatService:FindFirstChild("TextChannels") then
+		Services.TextChatService.TextChannels.RBXGeneral:SendAsync(tostring(Message))
+	else
+		Services.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(tostring(Message), "All")
+	end
+end
+
+function PlayerFuncs.PromptChangeRigType(RigType)
+	Services.AvatarEditorService:PromptSaveAvatar(
+		Services.LocalPlayer.Character.Humanoid.HumanoidDescription,
+		Enum.HumanoidRigType[RigType]
+	)
+end
+
+function PlayerFuncs.Fling(Target)
+	if Services.LocalPlayer.Character and Target.Character then
+		-- wip lazy rn
+		local Character = Services.LocalPlayer.Characater
+		local HRP = Character.HumanoidRootPart
+		local Humanoid = Character.Humanoid
+
+		local TargetCharacter = Target.Character
+	end
+end
+
+function PlayerFuncs.Walkfling(Power)
+	CommandToggles.Walkfling = false --// this is to stop the one before if the person is running touchfling again
+	wait(0.3)
+	CommandToggles.Walkfling = true
+	spawn(
+		function()
+			local HumanoidRootPart, Character, Velocity, Movel = nil, nil, nil, 0.1
+			repeat
+				task.wait()
+				if CommandToggles.Walkfling then
+					while CommandToggles.Walkfling and
+						not (Character and Character.Parent and HumanoidRootPart and HumanoidRootPart.Parent) do
+						Services.RunService.Heartbeat:Wait()
+						Character = Services.LocalPlayer.Character
+						HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+					end
+					if CommandToggles.Walkfling then
+						if
+							unpack(PlayerFuncs.GetPlayer("closest")):DistanceFromCharacter(
+							Services.Character.HumanoidRootPart.Position
+							) <= 5
+						then
+							Velocity = HumanoidRootPart.Velocity
+							HumanoidRootPart.Velocity = Velocity * tonumber(Power) + Vector3.new(0, tonumber(Power), 0)
+							game:GetService("RunService").RenderStepped:Wait()
+							if Character and Character.Parent and HumanoidRootPart and HumanoidRootPart.Parent then
+								HumanoidRootPart.Velocity = Velocity
+							end
+							game:GetService("RunService").Stepped:Wait()
+							if Character and Character.Parent and HumanoidRootPart and HumanoidRootPart.Parent then
+								HumanoidRootPart.Velocity = Velocity + Vector3.new(0, Movel, 0)
+								Movel = Movel * -1
+							end
+						end
+					end
+				end
+			until not CommandToggles.Walkfling
+		end
+	)
+end
+
+function PlayerFuncs.ESP(Player)
+	CommandToggles.ESP = true
+	if
+		Player and Player ~= Services.LocalPlayer and Player.Character and Player.Character.Head and CommandToggles.ESP --[[ and Player ~= Services.LocalPlayer]]
+	then
+		local function AddText(Head)
+			if not Head then
+				repeat
+					task.wait()
+				until Head
+			end
+			if CommandToggles.ESP then
+				local Billboard =
+					UIFuncs.CreateInstance(
+						"BillboardGui",
+						{
+							Parent = Head,
+							AlwaysOnTop = true,
+							Size = UDim2.new(0, 100, 0, 150),
+							Adornee = Head
+						}
+					)
+
+				local ListLayout =
+					UIFuncs.CreateInstance(
+						"UIListLayout",
+						{
+							Parent = Billboard
+						}
+					)
+
+				local Name =
+					UIFuncs.CreateInstance(
+						"TextLabel",
+						{
+							Parent = Billboard,
+							BackgroundTransparency = 1,
+							Size = UDim2.new(0, 100, 0, 30),
+							TextColor3 = Color3.fromRGB(255, 255, 255),
+							TextScaled = true,
+							TextStrokeTransparency = 0,
+							Text = Player.Name,
+							Font = Enum.Font.GothamBold
+						}
+					)
+
+				local Health =
+					UIFuncs.CreateInstance(
+						"TextLabel",
+						{
+							Parent = Billboard,
+							BackgroundTransparency = 1,
+							Size = UDim2.new(0, 100, 0, 40),
+							TextColor3 = Color3.fromRGB(255, 255, 255),
+							TextScaled = true,
+							TextStrokeTransparency = 0,
+							Font = Enum.Font.GothamBold
+						}
+					)
+
+				UIFuncs.CreateInstance("Highlight", {Parent = Head.Parent})
+
+				spawn(
+					function()
+						while Health do
+							wait()
+							pcall(
+								function()
+									if Head and Head.Parent and Head.Parent:FindFirstChild("Humanoid") then
+										Health.Text = "Health: " .. Head.Parent:FindFirstChild("Humanoid").Health
+									end
+								end
+							)
+						end
+					end
+				)
+			end
+		end
+
+		AddText(Player.Character.Head)
+
+		Player.CharacterAdded:Connect(
+			function(Character)
+				repeat
+					wait()
+				until Character and Character:FindFirstChild("Head") and Character:FindFirstChild("Humanoid")
+				wait(0.1)
+				AddText(Character.Head)
+			end
+		)
+	end
+end
+
+function PlayerFuncs.UnESP(Player)
+	CommandToggles.ESP = false
+	if
+		Player.Character and Player.Character.Head and Player.Character.Head:FindFirstChild("BillboardGui") and
+		Player.Character:FindFirstChild("Highlight")
+	then
+		Player.Character.Head.BillboardGui:Destroy()
+		Player.Character.Highlight:Destroy()
+	end
+end
+
+function UIFuncs.Destroy(UIObject)
+	if
+		not pcall(
+			function()
+				UIObject.Parent = Services.CoreGui
+			end
+		)
+	then
+		UIObject.Parent = nil
+	end
+end
+
+function UIFuncs.Open(Frame, OffsetSizeX, OffsetSizeY, Speed)
+	if Frame then
+		Frame.Size = UDim2.new(0, 0, 0, 0)
+		Frame.Visible = true
+		local Opening =
+			Services.TweenService:Create(
+				Frame,
+				TweenInfo.new(Speed, UIFuncs.Styles.OpenEasingStyle, UIFuncs.Styles.OpenEasingDirection),
+				{Size = UDim2.fromOffset(OffsetSizeX, OffsetSizeY)}
+			)
+		Opening:Play()
+	end
+end
+
+function UIFuncs.Close(Frame, Speed, OffsetX, OffsetY)
+	if Frame then
+		if not OffsetX and OffsetY then
+			OffsetX = 0
+			OffsetY = 0
+		end
+		local Closing =
+			Services.TweenService:Create(
+				Frame,
+				TweenInfo.new(Speed, UIFuncs.Styles.CloseEasingStyle, UIFuncs.Styles.CloseEasingDirection),
+				{Size = UDim2.fromOffset(0, 0)}
+			)
+		Closing:Play()
+		spawn(
+			function()
+				wait(Speed + 0.1)
+				Frame.Visible = false
+			end
+		)
+	end
+end
+
+function UIFuncs.TypeWriter(Object, Text)
+	spawn(
+		function()
+			if Object and Object.ClassName == "TextLabel" then
+				for i = 1, #Text, 1 do
+					Object.Text = string.sub(Text, 1, i)
+					task.wait()
+				end
+			end
+		end
+	)
+end
+
+function UIFuncs.Drag(Frame, Speed)
+	local UserInputService = Services.UserInputService
+	local RunService = (Services.RunService)
+	local Dragging
+	local DragInput
+	local DragStart
+	local StartPos
+
+	local function Lerp(a, b, m)
+		return a + (b - a) * m
+	end
+
+	if Speed == nil then
+		Speed = 4
+	end
+
+	local LMPos
+	local LGPos
+	local DragSpeed = (tonumber(Speed))
+
+	local function Update(dt)
+		if not (StartPos) then
+			return
+		end
+		if not (Dragging) and (LGPos) then
+			Frame.Position =
+				UDim2.new(
+					StartPos.X.Scale,
+					Lerp(Frame.Position.X.Offset, LGPos.X.Offset, dt * DragSpeed),
+					StartPos.Y.Scale,
+					Lerp(Frame.Position.Y.Offset, LGPos.Y.Offset, dt * DragSpeed)
+				)
+			return
+		end
+
+		local Delta = (LMPos - UserInputService:GetMouseLocation())
+		local XG = (StartPos.X.Offset - Delta.X)
+		local YG = (StartPos.Y.Offset - Delta.Y)
+		LGPos = UDim2.new(StartPos.X.Scale, XG, StartPos.Y.Scale, YG)
+		Frame.Position =
+			UDim2.new(
+				StartPos.X.Scale,
+				Lerp(Frame.Position.X.Offset, XG, dt * DragSpeed),
+				StartPos.Y.Scale,
+				Lerp(Frame.Position.Y.Offset, YG, dt * DragSpeed)
+			)
+	end
+
+	Frame.InputBegan:Connect(
+		function(Input)
+			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+				Dragging = true
+				DragStart = Input.Position
+				StartPos = Frame.Position
+				LMPos = UserInputService:GetMouseLocation()
+
+				Input.Changed:Connect(
+					function()
+						if Input.UserInputState == Enum.UserInputState.End then
+							Dragging = false
+						end
+					end
+				)
+			end
+		end
+	)
+
+	Frame.InputChanged:Connect(
+		function(Input)
+			if
+				Input.UserInputType == Enum.UserInputType.MouseMovement or
+				Input.UserInputType == Enum.UserInputType.Touch
+			then
+				DragInput = Input
+			end
+		end
+	)
+
+	RunService.Heartbeat:Connect(Update)
+end
+
+local Tabs = Interface.Commands.Tabs
+local CurrentTab
+
+for i, v in next, Tabs:GetChildren() do
+	if v:IsA("ScrollingFrame") then
+		if v.Name == "Commands" then
+			CurrentTab = "Commands"
+			v.Visible = true
+			v.Position = UDim2.new(0, 0, 0, 0)
+			v.Command.Visible = false
+		else
+			v.Position = UDim2.new(0, 310, 0, 0)
+			v.Visible = false
+		end
+	end
+end
+
+function UIFuncs.CreateInstance(Name, Properties, Children)
+	local Object = Instance.new(Name)
+	for i, Property in next, Properties or {} do
+		Object[i] = Property
+	end
+	for i, Children in next, Children or {} do
+		Children.Parent = Object
+	end
+
+	return Object
+end
+
+function UIFuncs.AddCommand(Name, Description, Args)
+	local Commands = Interface.Commands
+	local Tabs = Commands.Tabs
+	local TweenSpeed = 0.5
+	local Back = Commands.Topbar.Back
+	local Cooldown = false
+
+	local NewCommand = Tabs.Commands.Command:Clone()
+	NewCommand.Parent = Tabs.Commands
+	NewCommand.Visible = true
+	NewCommand.Description.Text = Description
+	NewCommand.Title.Text = Name
+
+	NewCommand.MouseButton1Click:Connect(
+		function()
+			if not Cooldown then
+				Cooldown = true
+				Back.Icon.Image = "rbxassetid://11422143469"
+				Tabs.CommandInfoExample.Visible = true
+				Services.TweenService:Create(
+					Tabs.Commands,
+					TweenInfo.new(TweenSpeed),
+					{Position = UDim2.new(0, -310, 0, 0)}
+				):Play()
+				Services.TweenService:Create(
+					Tabs.CommandInfoExample,
+					TweenInfo.new(TweenSpeed),
+					{Position = UDim2.new(0, 0, 0, 0)}
+				):Play()
+				local Arguments = Tabs.CommandInfoExample.Arguments
+				Arguments.Title.Text = Name
+				Arguments.Description.Text = Args
+				wait(TweenSpeed + 0.1)
+				Tabs.Commands.Visible = false
+				CurrentTab = "CommandInfoExample"
+				Cooldown = false
+			end
+		end
+	)
+
+	Back.MouseButton1Click:Connect(
+		function()
+			if Back.Icon.Image == "rbxassetid://11422143469" then
+				if not Cooldown then
+					Cooldown = true
+					Back.Icon.Image = "rbxassetid://11293977875"
+					Tabs.Commands.Visible = true
+					Services.TweenService:Create(
+						Tabs.Commands,
+						TweenInfo.new(TweenSpeed),
+						{Position = UDim2.new(0, 0, 0, 0)}
+					):Play()
+					Services.TweenService:Create(
+						Tabs.CommandInfoExample,
+						TweenInfo.new(TweenSpeed),
+						{Position = UDim2.new(0, 310, 0, 0)}
+					):Play()
+					wait(TweenSpeed + 0.1)
+					Tabs.CommandInfoExample.Visible = false
+					Cooldown = false
+				end
+			end
+		end
+	)
+end
+
+function UIFuncs.GetCurrentTime()
+	return tostring(os.date("%I") .. ":" .. os.date("%M") .. " " .. string.upper(tostring(os.date("%p"))))
+end
+
+function UIFuncs.SendNotification(Title, Description, Duration)
+	--// garbage code dont look plz ignore
+	spawn(
+		function()
+			local ClonedNotif = UIFuncs.NotificationHandler.Notification:Clone()
+			ClonedNotif.Description.Visible = false
+			ClonedNotif.Title.Visible = false
+			ClonedNotif.Parent = UIFuncs.NotificationHandler
+			ClonedNotif.Size = UDim2.new(0, 0, 0, 0)
+
+			ClonedNotif.Timer.Timer.Transparency = 1
+			ClonedNotif.BackgroundTransparency = 1
+			ClonedNotif.Description.TextTransparency = 1
+			ClonedNotif.Title.TextTra
