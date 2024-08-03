@@ -1,0 +1,456 @@
+-- Instances: 345 | Scripts: 6 | Modules: 0
+local G2L = {};
+
+-- StarterGui.DeltaKeyboard
+G2L["1"] = Instance.new("ScreenGui", gethui());
+G2L["1"]["Name"] = [[DeltaKeyboard]];
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+G2L["1"]["ResetOnSpawn"] = false;
+
+-- StarterGui.DeltaKeyboard.Main
+G2L["2"] = Instance.new("Frame", G2L["1"]);
+G2L["2"]["Active"] = true;
+G2L["2"]["BackgroundColor3"] = Color3.fromRGB(25, 25, 25);
+G2L["2"]["Size"] = UDim2.new(0, 478, 0, 236);
+G2L["2"]["Position"] = UDim2.new(0.5, -239, 0.5, -118);
+G2L["2"]["Name"] = [[Main]];
+
+-- StarterGui.DeltaKeyboard.Main.UIStroke
+G2L["3"] = Instance.new("UIStroke", G2L["2"]);
+G2L["3"]["Color"] = Color3.fromRGB(158, 0, 255);
+
+-- StarterGui.DeltaKeyboard.Main.Background
+G2L["4"] = Instance.new("Frame", G2L["2"]);
+G2L["4"]["Active"] = true;
+G2L["4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["4"]["BackgroundTransparency"] = 1;
+G2L["4"]["Size"] = UDim2.new(0.9978905916213989, 0, 0.8684942126274109, 0);
+G2L["4"]["Position"] = UDim2.new(0, 0, 0.12748458981513977, 0);
+G2L["4"]["Name"] = [[Background]];
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Backquote
+G2L["5"] = Instance.new("TextButton", G2L["4"]);
+G2L["5"]["TextWrapped"] = true;
+G2L["5"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["5"]["TextSize"] = 21;
+G2L["5"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["5"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["5"]["Name"] = [[-Backquote]];
+G2L["5"]["Text"] = [[`]];
+G2L["5"]["Position"] = UDim2.new(0, 7, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Backquote.UIStroke
+G2L["6"] = Instance.new("UIStroke", G2L["5"]);
+G2L["6"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["6"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Backquote.UICorner
+G2L["7"] = Instance.new("UICorner", G2L["5"]);
+G2L["7"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-One
+G2L["8"] = Instance.new("TextButton", G2L["4"]);
+G2L["8"]["TextWrapped"] = true;
+G2L["8"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["8"]["TextSize"] = 21;
+G2L["8"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["8"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["8"]["Name"] = [[-One]];
+G2L["8"]["Text"] = [[1]];
+G2L["8"]["Position"] = UDim2.new(0, 39, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-One.UIStroke
+G2L["9"] = Instance.new("UIStroke", G2L["8"]);
+G2L["9"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["9"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-One.UICorner
+G2L["a"] = Instance.new("UICorner", G2L["8"]);
+G2L["a"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Two
+G2L["b"] = Instance.new("TextButton", G2L["4"]);
+G2L["b"]["TextWrapped"] = true;
+G2L["b"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["b"]["TextSize"] = 21;
+G2L["b"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["b"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["b"]["Name"] = [[-Two]];
+G2L["b"]["Text"] = [[2]];
+G2L["b"]["Position"] = UDim2.new(0, 71, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Two.UIStroke
+G2L["c"] = Instance.new("UIStroke", G2L["b"]);
+G2L["c"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["c"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Two.UICorner
+G2L["d"] = Instance.new("UICorner", G2L["b"]);
+G2L["d"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Three
+G2L["e"] = Instance.new("TextButton", G2L["4"]);
+G2L["e"]["TextWrapped"] = true;
+G2L["e"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["e"]["TextSize"] = 21;
+G2L["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["e"]["Name"] = [[-Three]];
+G2L["e"]["Text"] = [[3]];
+G2L["e"]["Position"] = UDim2.new(0, 104, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Three.UIStroke
+G2L["f"] = Instance.new("UIStroke", G2L["e"]);
+G2L["f"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["f"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Three.UICorner
+G2L["10"] = Instance.new("UICorner", G2L["e"]);
+G2L["10"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Four
+G2L["11"] = Instance.new("TextButton", G2L["4"]);
+G2L["11"]["TextWrapped"] = true;
+G2L["11"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["11"]["TextSize"] = 21;
+G2L["11"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["11"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["11"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["11"]["Name"] = [[-Four]];
+G2L["11"]["Text"] = [[4]];
+G2L["11"]["Position"] = UDim2.new(0, 135, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Four.UIStroke
+G2L["12"] = Instance.new("UIStroke", G2L["11"]);
+G2L["12"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["12"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Four.UICorner
+G2L["13"] = Instance.new("UICorner", G2L["11"]);
+G2L["13"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Five
+G2L["14"] = Instance.new("TextButton", G2L["4"]);
+G2L["14"]["TextWrapped"] = true;
+G2L["14"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["14"]["TextSize"] = 21;
+G2L["14"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["14"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["14"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["14"]["Name"] = [[-Five]];
+G2L["14"]["Text"] = [[5]];
+G2L["14"]["Position"] = UDim2.new(0, 167, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Five.UIStroke
+G2L["15"] = Instance.new("UIStroke", G2L["14"]);
+G2L["15"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["15"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Five.UICorner
+G2L["16"] = Instance.new("UICorner", G2L["14"]);
+G2L["16"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Zero
+G2L["17"] = Instance.new("TextButton", G2L["4"]);
+G2L["17"]["TextWrapped"] = true;
+G2L["17"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["17"]["TextSize"] = 21;
+G2L["17"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["17"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["17"]["Size"] = UDim2.new(0, 24, 0, 25);
+G2L["17"]["Name"] = [[-Zero]];
+G2L["17"]["Text"] = [[0]];
+G2L["17"]["Position"] = UDim2.new(0, 327, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Zero.UIStroke
+G2L["18"] = Instance.new("UIStroke", G2L["17"]);
+G2L["18"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["18"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Zero.UICorner
+G2L["19"] = Instance.new("UICorner", G2L["17"]);
+G2L["19"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Six
+G2L["1a"] = Instance.new("TextButton", G2L["4"]);
+G2L["1a"]["TextWrapped"] = true;
+G2L["1a"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["1a"]["TextSize"] = 21;
+G2L["1a"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["1a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1a"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["1a"]["Name"] = [[-Six]];
+G2L["1a"]["Text"] = [[6]];
+G2L["1a"]["Position"] = UDim2.new(0, 199, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Six.UIStroke
+G2L["1b"] = Instance.new("UIStroke", G2L["1a"]);
+G2L["1b"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["1b"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Six.UICorner
+G2L["1c"] = Instance.new("UICorner", G2L["1a"]);
+G2L["1c"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Seven
+G2L["1d"] = Instance.new("TextButton", G2L["4"]);
+G2L["1d"]["TextWrapped"] = true;
+G2L["1d"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["1d"]["TextSize"] = 21;
+G2L["1d"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["1d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1d"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["1d"]["Name"] = [[-Seven]];
+G2L["1d"]["Text"] = [[7]];
+G2L["1d"]["Position"] = UDim2.new(0, 231, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Seven.UIStroke
+G2L["1e"] = Instance.new("UIStroke", G2L["1d"]);
+G2L["1e"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["1e"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Seven.UICorner
+G2L["1f"] = Instance.new("UICorner", G2L["1d"]);
+G2L["1f"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Eight
+G2L["20"] = Instance.new("TextButton", G2L["4"]);
+G2L["20"]["TextWrapped"] = true;
+G2L["20"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["20"]["TextSize"] = 21;
+G2L["20"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["20"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["20"]["Size"] = UDim2.new(0, 24, 0, 25);
+G2L["20"]["Name"] = [[-Eight]];
+G2L["20"]["Text"] = [[8]];
+G2L["20"]["Position"] = UDim2.new(0, 264, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Eight.UIStroke
+G2L["21"] = Instance.new("UIStroke", G2L["20"]);
+G2L["21"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["21"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Eight.UICorner
+G2L["22"] = Instance.new("UICorner", G2L["20"]);
+G2L["22"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Nine
+G2L["23"] = Instance.new("TextButton", G2L["4"]);
+G2L["23"]["TextWrapped"] = true;
+G2L["23"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["23"]["TextSize"] = 21;
+G2L["23"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["23"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["23"]["Size"] = UDim2.new(0, 24, 0, 25);
+G2L["23"]["Name"] = [[-Nine]];
+G2L["23"]["Text"] = [[9]];
+G2L["23"]["Position"] = UDim2.new(0, 295, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Nine.UIStroke
+G2L["24"] = Instance.new("UIStroke", G2L["23"]);
+G2L["24"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["24"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Nine.UICorner
+G2L["25"] = Instance.new("UICorner", G2L["23"]);
+G2L["25"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Minus
+G2L["26"] = Instance.new("TextButton", G2L["4"]);
+G2L["26"]["TextWrapped"] = true;
+G2L["26"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["26"]["TextSize"] = 21;
+G2L["26"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["26"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["26"]["Size"] = UDim2.new(0, 24, 0, 25);
+G2L["26"]["Name"] = [[-Minus]];
+G2L["26"]["Text"] = [[-]];
+G2L["26"]["Position"] = UDim2.new(0, 358, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Minus.UIStroke
+G2L["27"] = Instance.new("UIStroke", G2L["26"]);
+G2L["27"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["27"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Minus.UICorner
+G2L["28"] = Instance.new("UICorner", G2L["26"]);
+G2L["28"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Equals
+G2L["29"] = Instance.new("TextButton", G2L["4"]);
+G2L["29"]["TextWrapped"] = true;
+G2L["29"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["29"]["TextSize"] = 21;
+G2L["29"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["29"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["29"]["Size"] = UDim2.new(0, 24, 0, 25);
+G2L["29"]["Name"] = [[-Equals]];
+G2L["29"]["Text"] = [[=]];
+G2L["29"]["Position"] = UDim2.new(0, 389, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Equals.UIStroke
+G2L["2a"] = Instance.new("UIStroke", G2L["29"]);
+G2L["2a"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["2a"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.-Equals.UICorner
+G2L["2b"] = Instance.new("UICorner", G2L["29"]);
+G2L["2b"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.Backspace
+G2L["2c"] = Instance.new("TextButton", G2L["4"]);
+G2L["2c"]["TextWrapped"] = true;
+G2L["2c"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["2c"]["TextSize"] = 11;
+G2L["2c"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["2c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["2c"]["Size"] = UDim2.new(0, 47, 0, 25);
+G2L["2c"]["Name"] = [[Backspace]];
+G2L["2c"]["Text"] = [[Backspace]];
+G2L["2c"]["Position"] = UDim2.new(0, 422, 0, 31);
+
+-- StarterGui.DeltaKeyboard.Main.Background.Backspace.UIStroke
+G2L["2d"] = Instance.new("UIStroke", G2L["2c"]);
+G2L["2d"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["2d"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.Backspace.UICorner
+G2L["2e"] = Instance.new("UICorner", G2L["2c"]);
+G2L["2e"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.Q
+G2L["2f"] = Instance.new("TextButton", G2L["4"]);
+G2L["2f"]["TextWrapped"] = true;
+G2L["2f"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["2f"]["TextSize"] = 21;
+G2L["2f"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["2f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["2f"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["2f"]["Name"] = [[Q]];
+G2L["2f"]["Text"] = [[Q]];
+G2L["2f"]["Position"] = UDim2.new(0, 54, 0, 63);
+
+-- StarterGui.DeltaKeyboard.Main.Background.Q.UIStroke
+G2L["30"] = Instance.new("UIStroke", G2L["2f"]);
+G2L["30"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["30"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.Q.UICorner
+G2L["31"] = Instance.new("UICorner", G2L["2f"]);
+G2L["31"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.W
+G2L["32"] = Instance.new("TextButton", G2L["4"]);
+G2L["32"]["TextWrapped"] = true;
+G2L["32"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["32"]["TextSize"] = 21;
+G2L["32"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["32"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["32"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["32"]["Name"] = [[W]];
+G2L["32"]["Text"] = [[W]];
+G2L["32"]["Position"] = UDim2.new(0, 87, 0, 63);
+
+-- StarterGui.DeltaKeyboard.Main.Background.W.UIStroke
+G2L["33"] = Instance.new("UIStroke", G2L["32"]);
+G2L["33"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["33"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.W.UICorner
+G2L["34"] = Instance.new("UICorner", G2L["32"]);
+G2L["34"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.O
+G2L["35"] = Instance.new("TextButton", G2L["4"]);
+G2L["35"]["TextWrapped"] = true;
+G2L["35"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["35"]["TextSize"] = 21;
+G2L["35"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["35"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["35"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["35"]["Name"] = [[O]];
+G2L["35"]["Text"] = [[O]];
+G2L["35"]["Position"] = UDim2.new(0, 312, 0, 63);
+
+-- StarterGui.DeltaKeyboard.Main.Background.O.UIStroke
+G2L["36"] = Instance.new("UIStroke", G2L["35"]);
+G2L["36"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["36"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.O.UICorner
+G2L["37"] = Instance.new("UICorner", G2L["35"]);
+G2L["37"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.I
+G2L["38"] = Instance.new("TextButton", G2L["4"]);
+G2L["38"]["TextWrapped"] = true;
+G2L["38"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["38"]["TextSize"] = 21;
+G2L["38"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["38"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["38"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["38"]["Name"] = [[I]];
+G2L["38"]["Text"] = [[I]];
+G2L["38"]["Position"] = UDim2.new(0, 280, 0, 63);
+
+-- StarterGui.DeltaKeyboard.Main.Background.I.UIStroke
+G2L["39"] = Instance.new("UIStroke", G2L["38"]);
+G2L["39"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["39"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.I.UICorner
+G2L["3a"] = Instance.new("UICorner", G2L["38"]);
+G2L["3a"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.U
+G2L["3b"] = Instance.new("TextButton", G2L["4"]);
+G2L["3b"]["TextWrapped"] = true;
+G2L["3b"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["3b"]["TextSize"] = 21;
+G2L["3b"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["3b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["3b"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["3b"]["Name"] = [[U]];
+G2L["3b"]["Text"] = [[U]];
+G2L["3b"]["Position"] = UDim2.new(0, 249, 0, 63);
+
+-- StarterGui.DeltaKeyboard.Main.Background.U.UIStroke
+G2L["3c"] = Instance.new("UIStroke", G2L["3b"]);
+G2L["3c"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["3c"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.U.UICorner
+G2L["3d"] = Instance.new("UICorner", G2L["3b"]);
+G2L["3d"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.Y
+G2L["3e"] = Instance.new("TextButton", G2L["4"]);
+G2L["3e"]["TextWrapped"] = true;
+G2L["3e"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["3e"]["TextSize"] = 21;
+G2L["3e"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["3e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["3e"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["3e"]["Name"] = [[Y]];
+G2L["3e"]["Text"] = [[Y]];
+G2L["3e"]["Position"] = UDim2.new(0, 216, 0, 63);
+
+-- StarterGui.DeltaKeyboard.Main.Background.Y.UIStroke
+G2L["3f"] = Instance.new("UIStroke", G2L["3e"]);
+G2L["3f"]["Color"] = Color3.fromRGB(255, 255, 255);
+G2L["3f"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+-- StarterGui.DeltaKeyboard.Main.Background.Y.UICorner
+G2L["40"] = Instance.new("UICorner", G2L["3e"]);
+G2L["40"]["CornerRadius"] = UDim.new(0, 5);
+
+-- StarterGui.DeltaKeyboard.Main.Background.T
+G2L["41"] = Instance.new("TextButton", G2L["4"]);
+G2L["41"]["TextWrapped"] = true;
+G2L["41"]["BackgroundColor3"] = Color3.fromRGB(8, 8, 8);
+G2L["41"]["TextSize"] = 21;
+G2L["41"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regu
