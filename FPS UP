@@ -1,3 +1,4 @@
+print('F ‍ P ‍ S ‍  ‍ UP By 48973854274252');
 local remote = game:GetService("ReplicatedStorage").UpdateFPS
 local function getRandomNumber()
     return math.random(4200, 4400)
