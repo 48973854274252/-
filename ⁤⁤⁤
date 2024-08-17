@@ -17,13 +17,13 @@
  end
  
  -- Notification library
- local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/notificationtest"))();
+ local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/-/main/system/Notifc"))();
  local Notify = Notification.Notify;
 
  Notify({
 		 Description = "https://discord.gg/pnPVKKdpfd";
-		 Title = "Join the Discord Server!";
-		 Duration = 20;
+		 Title = "Join the Discord Server!  ⁢Archived Script unknown";
+		 Duration = 10;
 		 
 });
  
@@ -9216,7 +9216,7 @@ getChar().HumanoidRootPart.CFrame = target.Character.Humanoid.RootPart.CFrame
  end)
  
  cmd.add({"pp", "penis"}, {"penis (pp)", "benis :flushed:"}, function()
- loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/pp"))()
+ loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/-/main/system/Ph"))()
  end)
  
  cmd.add({"stealaudio", "getaudio", "steal", "logaudio"}, {"stealaudio <player> (getaudio, logaudio, steal)", "Save all sounds a player is playing to a file  -Cyrus"}, function(p)
