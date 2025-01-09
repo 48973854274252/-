@@ -21,7 +21,47 @@ Section1:NewButton("New Keyless Infinix Dex", "Loader", function()
 end)
 
 Section1:NewButton("", "", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/F"))()
+end
 
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/-/refs/heads/main/system/Dex%20(b)"))()
+end
+
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/-/refs/heads/main/system/Dex%20(N)"))()
+end
+
+Section1:NewButton("dex v5", "v5", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/dex%2520v5.txt"))()
+end
+
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/Script%20Dumper%20SYN%20X.txt"))()
+end
+
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/Dark%20Dex%20SYN%20X.txt"))()
+end
+
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/Dex%20Explorer%20V2.txt"))()
+end
+
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/Script%20Dumper%20SYN%20X.txt"))()
+end
+
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet(""))()
+end
+
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet(""))()
+end
+
+Section1:NewButton("", "", function()
+    loadstring(game:HttpGet(""))()
 end
 
 Section1:NewButton("Building Tools", "Loader", function()
