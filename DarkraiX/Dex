@@ -9,7 +9,7 @@ local colors = {
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/1v-2-4v-5v-6-9v-15-7-14-8-16v-10-17v-11v-12-18-19-13v/refs/heads/main/Kavo%E3%85%A4"))()
 local Window = Library.CreateLib("Dex's", colors)
 
-local Tab1 = Window:NewTab(" ")
+local Tab1 = Window:NewTab(".")
 local Section1 = Tab1:NewSection("Scripts")
 
 Section1:NewButton("Old-KEYLESS-Infinix-Dex", "Loader", function()
@@ -22,47 +22,47 @@ end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/F"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/-/refs/heads/main/system/Dex%20(b)"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/-/refs/heads/main/system/Dex%20(N)"))()
-end
+end)
 
 Section1:NewButton("dex v5", "v5", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/dex%2520v5.txt"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/Script%20Dumper%20SYN%20X.txt"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/Dark%20Dex%20SYN%20X.txt"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/Dex%20Explorer%20V2.txt"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/%E2%80%8B/Script%20Dumper%20SYN%20X.txt"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/Dex%20Explorer.txt"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/Hamchhez/SYNAPSE/DEX"))()
-end
+end)
 
 Section1:NewButton("", "", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/dex/refs/heads/main/explorer"))()
-end
+end)
 
 Section1:NewButton("Building Tools", "Loader", function()
     loadstring(game:HttpGet("https://pastefy.app/4s7zaufo/raw"))()
