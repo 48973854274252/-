@@ -1,0 +1,29 @@
+local colors = {
+    SchemeColor = Color3.fromRGB(41, 43, 42 ),  
+    Background = Color3.fromRGB(12, 14, 11 ),    
+    Header = Color3.fromRGB(34, 33, 35),         
+    TextColor = Color3.fromRGB(212, 124, 66),
+    ElementColor = Color3.fromRGB(23, 22, 22 )
+}
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/1v-2-4v-5v-6-9v-15-7-14-8-16v-10-17v-11v-12-18-19-13v/refs/heads/main/Kavo%E3%85%A4"))()
+local Window = Library.CreateLib("Dex's", colors)
+
+local Tab1 = Window:NewTab(" ")
+local Section1 = Tab1:NewSection("Scripts")
+
+Section1:NewButton("Old-KEYLESS-Infinix-Dex", "Loader", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/VLG/refs/heads/main/Scripts/MC_IY%20Dex.txt"))()
+end)
+
+Section1:NewButton("New Keyless Infinix Dex", "Loader", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/48973854274252/Source/refs/heads/main/F%E2%80%8B%20%C2%A0AK%26E%20SCRIPTS%5E%25%E2%80%8B%20%C2%A0/DEX%20MOBILE%E2%80%8B%20%C2%A0CRACKED%E2%80%8B%20%C2%A0NO%E2%80%8B%20%C2%A0KEY"))()
+end)
+
+Section1:NewButton("", "", function()
+
+end
+
+Section1:NewButton("Building Tools", "Loader", function()
+    loadstring(game:HttpGet("https://pastefy.app/4s7zaufo/raw"))()
+end)
